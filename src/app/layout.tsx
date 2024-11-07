@@ -6,6 +6,18 @@ import { type Metadata } from "next";
 export const metadata: Metadata = {
   title: "Trykktest",
   description: "her er det trykk ja!",
+  openGraph: {
+    type: "website",
+    url: "https://lavtrykk-orse.vercel.app/",
+    title: "Er det lavtrykk?",
+    description: "Eller er det høytrykk?",
+    siteName: "Trykktestern",
+    images: [
+      {
+        url: "https://lavtrykk-orse.vercel.app/image",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
