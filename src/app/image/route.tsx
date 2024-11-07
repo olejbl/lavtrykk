@@ -18,7 +18,7 @@ export async function GET() {
 
   if (!weatherRes.ok) {
     console.error("Error fetching weather data:", weatherData);
-    return <p>Unable to fetch weather data.</p>;
+    throw new Error("Unable to fetch weather data");
   }
 
   const airPressure =
@@ -44,7 +44,7 @@ export async function GET() {
       >
         <p>Updated at: {weatherData.properties.meta.updated_at}</p>
         <h2 tw="text-3xl sm:text-4xl font-bold tracking-tight text-black bg-gray-400 text-left">
-          Lufttrykk i Oslo
+          Lufttrykk i Oslo ( {airPressure} )
         </h2>
         <p style={{ color }}>{airPressure} hPa</p>
         <h2 tw="text-3xl sm:text-4xl font-bold tracking-tight text-black bg-gray-400 text-left">
