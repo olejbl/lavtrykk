@@ -43,6 +43,7 @@ export async function GET() {
         tw="flex flex-col w-full h-full items-center justify-center"
       >
         <p>Updated at: {weatherData.properties.meta.updated_at}</p>
+        <p>Timestamp: {new Date().toISOString()}</p>
         <h2 tw="text-3xl sm:text-4xl font-bold tracking-tight text-black bg-gray-400 text-left">
           Lufttrykk i Oslo ( {airPressure} )
         </h2>
