@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: "Trykktestern",
     images: [
       {
-        url: "https://lavtrykk-orse.vercel.app/image",
+        url: `https://lavtrykk-orse.vercel.app/image?${new Date().toISOString()}`,
       },
     ],
   },

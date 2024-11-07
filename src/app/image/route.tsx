@@ -36,20 +36,43 @@ export async function GET() {
   const normalizedDifference = Math.min(pressureDifference / maxDifference, 1);
   const redIntensity = Math.floor(normalizedDifference * 255);
   const color = `rgb(${redIntensity}, 0, 0)`;
+
+  const now = new Date();
+
+  const date = String(now.getDate()).padStart(2, "0");
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+
+  const timestamp = date + "/" + month + " " + hours + ":" + minutes;
+
+  console.log(timestamp); // Output example: "07, 11, 14, 05"
+
   return new ImageResponse(
     (
       <div
-        style={{ backgroundColor: color }}
+        style={{
+          backgroundImage: "linear-gradient(to bottom, #defefe, #ffe1e1)",
+        }}
         tw="flex flex-col w-full h-full items-center justify-center"
       >
         <p>Updated at: {weatherData.properties.meta.updated_at}</p>
-        <p>Timestamp: {new Date().toISOString()}</p>
-        <h2 tw="text-3xl sm:text-4xl font-bold tracking-tight text-black bg-gray-400 text-left">
-          Lufttrykk i Oslo ( {airPressure} )
+        <p>Timestamp: {timestamp}</p>
+        <h2 tw="text-3xl sm:text-4xl font-bold tracking-tight text-black text-left">
+          Lufttrykk i Oslo ( {airPressure} hPa)
         </h2>
-        <p style={{ color }}>{airPressure} hPa</p>
-        <h2 tw="text-3xl sm:text-4xl font-bold tracking-tight text-black bg-gray-400 text-left">
-          Status: {pressureStatus}
+        <h2
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgb(${redIntensity}, 124, 240), rgb(${redIntensity}, 223, 216))`,
+            backgroundClip: "text",
+            color: "transparent",
+            fontSize: 60,
+            letterSpacing: -2,
+            fontWeight: 700,
+            textAlign: "center",
+          }}
+        >
+          {pressureStatus}
         </h2>
       </div>
     ),
